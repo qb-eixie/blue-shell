@@ -26,5 +26,14 @@ int main () {
   
   printf("%d, %d, %d\n"), sock_addr.sin_family, sock_addr.sin_addr, sock_addr.sin_port;
 
+  if(bind(server_sock_fd, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) < 0) {
+    printf("[FAILED TO BIND SOCK ADDR]");
+  }
+  else {
+    printf("[success]");
+  }
+
+  listen(server_sock_fd, 5);
+
   return 0;
 }
